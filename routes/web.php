@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ImportUserController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,5 +35,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/daisy', function() {
     return view('dashboard.main');
 });
+
+Route::resource('users', UserController::class);
+Route::post('/users/import', [ImportUserController::class, 'store'])->name('user.import');
+
+Route::resource('permissions', PermissionController::class);
+Route::resource('roles', RoleController::class);
 
 require __DIR__.'/auth.php';
