@@ -13,7 +13,9 @@ class ViolationController extends Controller
      */
     public function index()
     {
-        //
+        $violations = Violation::all();
+
+        return View('violation.index', compact('violations'));
     }
 
     /**
