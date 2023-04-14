@@ -5,64 +5,81 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreViolationRequest;
 use App\Http\Requests\UpdateViolationRequest;
 use App\Models\Violation;
+use App\Models\ViolationType;
+use Exception;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ViolationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): View
     {
-        $violations = Violation::all();
+        $violations = Violation::with('violationType')->paginate(10);
 
         return View('violation.index', compact('violations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
-        //
+        $violationTypes = ViolationType::pluck('violation_type_name', 'id');
+
+        return View('violation.create', compact('violationTypes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreViolationRequest $request)
+    public function store(StoreViolationRequest $request): RedirectResponse
     {
-        //
+        try {
+            $data = [
+                'violation_name' => $request->input('violation-name'),
+                'violation_point' => $request->input('violation-point'),
+                'violation_types_id' => $request->input('violation-type'),
+            ];
+
+            Violation::query()->create($data);
+
+            return redirect()->route('violations.index')->with('success', 'Berhasil menambahkan pelanggaran baru');
+        } catch (Exception $exception) {
+            return redirect()->route('violations.index')->with('fail', 'Gagal menambahkan pelanggaran baru');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Violation $violation)
+    public function show(Violation $violation): View
     {
-        //
+        return View('violation.show', compact('violation'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Violation $violation)
+    public function edit(Violation $violation): View
     {
-        //
+        $violationTypes = ViolationType::pluck('violation_type_name', 'id');
+
+        return View('violation.edit', compact('violation', 'violationTypes'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateViolationRequest $request, Violation $violation)
+    public function update(UpdateViolationRequest $request, Violation $violation): RedirectResponse
     {
-        //
+        try {
+            $data = [
+                'violation_name' => $request->input('violation-name'),
+                'violation_point' => $request->input('violation-point'),
+                'violation_types_id' => $request->input('violation-type'),
+            ];
+
+            $violation->update($data);
+
+            return redirect()->route('violations.index')->with('success', 'Berhasil mengubah pelanggaran');
+        } catch (Exception $exception) {
+            return redirect()->route('violations.index')->with('fail', 'Gagal mengubah pelanggaran');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Violation $violation)
+    public function destroy(Violation $violation): RedirectResponse
     {
-        //
+        try {
+            $violation->delete();
+
+            return redirect()->route('violations.index')->with('success', 'Berhasil menghapus pelanggaran');
+        } catch (Exception $exception) {
+            return redirect()->route('violations.index')->with('fail', 'Gagal menghapus pelanggaran');
+        }
     }
 }
