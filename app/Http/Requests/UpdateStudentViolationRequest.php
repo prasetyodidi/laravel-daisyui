@@ -11,7 +11,7 @@ class UpdateStudentViolationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('store', $this->route('student_violation'));
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateStudentViolationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'student' => 'required',
+            'violation' => 'required',
+            'violated-at' => 'required'
         ];
     }
 }
