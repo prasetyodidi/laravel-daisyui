@@ -23,7 +23,7 @@ class UpdateViolationRequest extends FormRequest
     {
         return [
             'violation-name' => 'required',
-            'violation-point' => 'required|number',
+            'violation-point' => 'required|numeric',
             'violation-type' => 'required',
         ];
     }
