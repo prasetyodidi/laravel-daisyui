@@ -5,62 +5,84 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreViolationTypeRequest;
 use App\Http\Requests\UpdateViolationTypeRequest;
 use App\Models\ViolationType;
+use Exception;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ViolationTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): View
     {
-        //
+        $violationTypes = ViolationType::paginate(10);
+
+        return View('violation-type.index', compact('violationTypes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
-        //
+        return View('violation-type.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreViolationTypeRequest $request)
+    public function store(StoreViolationTypeRequest $request): RedirectResponse
     {
-        //
+        try {
+            $data = [
+                'violation_type_name' => $request->input('violation-type-name')
+            ];
+
+            ViolationType::query()->create($data);
+
+            return redirect()
+                ->route('violation-types.index')
+                ->with('success', 'Berhasil manambahkan jenis pelanggaran');
+        } catch (Exception) {
+            return redirect()
+                ->route('violation-types.index')
+                ->with('fail', 'Gagal manambahkan jenis pelanggaran');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(ViolationType $violationType)
+    public function show(ViolationType $violationType): View
     {
-        //
+        return View('violation-type.show', compact('violationType'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ViolationType $violationType)
+    public function edit(ViolationType $violationType): View
     {
-        //
+        return View('violation-type.edit', compact('violationType'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateViolationTypeRequest $request, ViolationType $violationType)
+    public function update(UpdateViolationTypeRequest $request, ViolationType $violationType): RedirectResponse
     {
-        //
+        try {
+            $data = [
+                'violation_type_name' => $request->input('violation-type-name')
+            ];
+
+            $violationType->update($data);
+
+            return redirect()
+                ->route('violation-types.index')
+                ->with('success', 'Berhasil mengubah jenis pelanggaran');
+        } catch (Exception) {
+            return redirect()
+                ->route('violation-types.index')
+                ->with('fail', 'Gagal mengubah jenis pelanggaran');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(ViolationType $violationType)
     {
-        //
+        try {
+            $violationType->delete();
+
+            return redirect()
+                ->route('violation-types.index')
+                ->with('success', 'Berhasil menghapus jenis pelanggaran');
+        } catch (Exception) {
+            return redirect()
+                ->route('violation-types.index')
+                ->with('fail', 'Gagal menghapus jenis pelanggaran');
+        }
     }
 }
