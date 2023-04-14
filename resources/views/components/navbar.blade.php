@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 fixed top-0 left-0 z-20">
+<div class="navbar bg-base-200 fixed top-0 left-0 z-20 backdrop-blur-sm border-b-2 border-base-200">
     <label for="my-drawer-2" class="btn btn-ghost lg:hidden">
         <x-heroicon-o-bars-3 class="w-6 h-6 text-gray-500"/>
     </label>
