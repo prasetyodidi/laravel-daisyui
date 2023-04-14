@@ -14,7 +14,7 @@ class ViolationController extends Controller
 {
     public function index(): View
     {
-        $violations = Violation::with('violationType')->paginate(10);
+        $violations = Violation::with('violationType')->orderBy('created_at', 'desc')->paginate(10);
 
         return View('violation.index', compact('violations'));
     }
