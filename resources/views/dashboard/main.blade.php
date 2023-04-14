@@ -46,12 +46,13 @@
             <x-slot name="title">Point Siswa</x-slot>
             <x-slot name="menu">
                 <ul class="overflow-y-auto p-4 pt-20 text-sm">
-                    <li>
-                        <a class="menu-item">
-                            <x-heroicon-o-home class="h-6 w-6"/>
-                            Dashboard
-                        </a>
-                    </li>
+                    <x-sidebar-item>
+                        <x-slot name="title">Dashboard</x-slot>
+                        <x-slot name="icon">
+                            <x-heroicon-o-document-text class="h-5 w-5"/>
+                        </x-slot>
+                        <x-slot name="routeName">dashboard</x-slot>
+                    </x-sidebar-item>
                     <x-sidebar-item>
                         <x-slot name="title">Activitas</x-slot>
                         <x-slot name="icon">
