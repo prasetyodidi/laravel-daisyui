@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\AchievementTypeController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ImportUserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PointConditionController;
@@ -61,5 +62,6 @@ Route::resource('student-violations', StudentViolationController::class);
 Route::resource('violations', ViolationController::class);
 Route::resource('violation-types', ViolationTypeController::class);
 Route::resource('teacher', TeacherController::class);
+Route::resource('activities', ActivityController::class);
 
 require __DIR__.'/auth.php';
