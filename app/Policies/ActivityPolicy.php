@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Activity;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class ActivityPolicy
 {
@@ -13,7 +12,7 @@ class ActivityPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->hasPermissionTo('List Activities');
     }
 
     /**
@@ -21,7 +20,7 @@ class ActivityPolicy
      */
     public function view(User $user, Activity $activity): bool
     {
-        //
+        return $user->hasPermissionTo('View Activity');
     }
 
     /**
@@ -29,7 +28,7 @@ class ActivityPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasPermissionTo('Create Activity');
     }
 
     /**
@@ -37,7 +36,8 @@ class ActivityPolicy
      */
     public function update(User $user, Activity $activity): bool
     {
-        //
+        return $user->hasPermissionTo('Update Activity');
+
     }
 
     /**
@@ -45,7 +45,8 @@ class ActivityPolicy
      */
     public function delete(User $user, Activity $activity): bool
     {
-        //
+        return $user->hasPermissionTo('Delete Activity');
+
     }
 
     /**
@@ -53,7 +54,8 @@ class ActivityPolicy
      */
     public function restore(User $user, Activity $activity): bool
     {
-        //
+        return $user->hasPermissionTo('Restore Activity');
+
     }
 
     /**
@@ -61,6 +63,7 @@ class ActivityPolicy
      */
     public function forceDelete(User $user, Activity $activity): bool
     {
-        //
+        return $user->hasPermissionTo('Force Delete Activity');
+
     }
 }
