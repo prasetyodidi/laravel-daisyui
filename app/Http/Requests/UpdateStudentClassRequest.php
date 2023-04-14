@@ -11,7 +11,7 @@ class UpdateStudentClassRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('id'));
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateStudentClassRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'class-name' => 'required',
+            'homeroom-teacher' => 'required'
         ];
     }
 }
