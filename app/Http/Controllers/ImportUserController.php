@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ImportUserRequest;
-use App\Imports\UsersImport;
 use App\Services\User\UserService;
 use \Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ImportUserController extends Controller
 {
