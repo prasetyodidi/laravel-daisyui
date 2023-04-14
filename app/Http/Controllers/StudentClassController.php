@@ -5,62 +5,86 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStudentClassRequest;
 use App\Http\Requests\UpdateStudentClassRequest;
 use App\Models\StudentClass;
+use App\Models\Teacher;
+use App\Models\User;
+use Exception;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class StudentClassController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): View
     {
-        //
+        $studentClasses = StudentClass::query()->with('homeroomTeacher')->paginate(10);
+
+        return View('student-class.index', compact('studentClasses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
-        //
+        $teachers = Teacher::all();
+
+        return View('student-class.create', compact('teachers'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreStudentClassRequest $request)
+    public function store(StoreStudentClassRequest $request): RedirectResponse
     {
-        //
+        try {
+
+            $data = [
+                'homeroom_teachers_id' => $request->input('homeroom-teacher'),
+                'class_name' => $request->input('class-name')
+            ];
+
+            StudentClass::query()->create($data);
+
+            return redirect()->route('student-classes.index')->with('success', 'Berhasil menambahkan data kelas');
+
+        } catch (Exception $exception) {
+            return redirect()->route('student-classes.index')->with('fail', 'Gagal menambahkan data kelas');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(StudentClass $studentClass)
+    public function show(StudentClass $studentClass): View
     {
-        //
+        return View('student-class.show', compact('studentClass'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(StudentClass $studentClass)
+    public function edit(StudentClass $studentClass): View
     {
-        //
+        $teachers = User::role('teacher')->get();
+
+        return View('student-class.edit', compact('studentClass', 'teachers'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateStudentClassRequest $request, StudentClass $studentClass)
+    public function update(UpdateStudentClassRequest $request, StudentClass $studentClass): RedirectResponse
     {
-        //
+        try {
+
+            $data = [
+                'homeroom_teachers_id' => $request->input('homeroom-teacher'),
+                'class_name' => $request->input('class-name')
+            ];
+
+            $studentClass->update($data);
+
+            return redirect()->route('student-classes.index')->with('success', 'Berhasil mengubah data kelas');
+
+        } catch (Exception $exception) {
+            return redirect()->route('student-classes.index')->with('fail', 'Gagal mengubah data kelas');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(StudentClass $studentClass)
+    public function destroy(StudentClass $studentClass): RedirectResponse
     {
-        //
+        try {
+
+            $studentClass->delete();
+
+            return redirect()->route('student-classes.index')->with('success', 'Berhasil menghapus data kelas');
+
+        } catch (Exception $exception) {
+            return redirect()->route('student-classes.index')->with('fail', 'Gagal menghapus data kelas');
+        }
     }
 }
