@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\StudentClass;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreStudentClassRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreStudentClassRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('store', StudentClass::class);
     }
 
     /**
@@ -22,7 +23,8 @@ class StoreStudentClassRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'class-name' => 'required',
+            'homeroom-teacher' => 'required'
         ];
     }
 }
