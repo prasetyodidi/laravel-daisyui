@@ -52,12 +52,20 @@
                             Dashboard
                         </a>
                     </li>
-                    <li>
-                        <a class="menu-item">
+                    <x-sidebar-item>
+                        <x-slot name="title">Activitas</x-slot>
+                        <x-slot name="icon">
                             <x-heroicon-o-document-text class="h-5 w-5"/>
-                            Aktivity
-                        </a>
-                    </li>
+                        </x-slot>
+                        <x-slot name="routeName">activities.index</x-slot>
+                    </x-sidebar-item>
+                    <x-sidebar-item>
+                        <x-slot name="title">Guru</x-slot>
+                        <x-slot name="icon">
+                            <x-heroicon-o-document-text class="h-5 w-5"/>
+                        </x-slot>
+                        <x-slot name="routeName">teacher.index</x-slot>
+                    </x-sidebar-item>
                     <x-sidebar-item>
                         <x-slot name="title">Ketentuan Point</x-slot>
                         <x-slot name="icon">
@@ -91,13 +99,6 @@
                         <x-slot name="routeName">student-violations.index</x-slot>
                     </x-sidebar-item>
                     <x-sidebar-item>
-                        <x-slot name="title">Guru</x-slot>
-                        <x-slot name="icon">
-                            <x-heroicon-o-document-text class="h-5 w-5"/>
-                        </x-slot>
-                        <x-slot name="routeName">teacher.index</x-slot>
-                    </x-sidebar-item>
-                    <x-sidebar-item>
                         <x-slot name="title">Pelanggaran</x-slot>
                         <x-slot name="icon">
                             <x-heroicon-o-document-text class="h-5 w-5"/>
@@ -112,6 +113,13 @@
                         <x-slot name="routeName">violation-types.index</x-slot>
                     </x-sidebar-item>
                     <x-sidebar-item>
+                        <x-slot name="title">Penghargaan Siswa</x-slot>
+                        <x-slot name="icon">
+                            <x-heroicon-o-document-text class="h-5 w-5"/>
+                        </x-slot>
+                        <x-slot name="routeName">student-achievements.index</x-slot>
+                    </x-sidebar-item>
+                    <x-sidebar-item>
                         <x-slot name="title">Penghargaan</x-slot>
                         <x-slot name="icon">
                             <x-heroicon-o-document-text class="h-5 w-5"/>
@@ -119,7 +127,7 @@
                         <x-slot name="routeName">achievements.index</x-slot>
                     </x-sidebar-item>
                     <x-sidebar-item>
-                        <x-slot name="title">Jenis Penghargaaan</x-slot>
+                        <x-slot name="title">Jenis Penghargaan</x-slot>
                         <x-slot name="icon">
                             <x-heroicon-o-document-text class="h-5 w-5"/>
                         </x-slot>
