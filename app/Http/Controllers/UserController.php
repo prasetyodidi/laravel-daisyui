@@ -5,21 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
-use App\Services\User\UserService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function __construct(
-        private readonly UserService $userService
-    ) {
+    public function __construct()
+    {
         $this->authorizeResource(User::class);
     }
 
     public function index(Request $request): View
     {
-        $users = $this->userService->all();
+        $users = User::paginate(10);
 
         return View('user.index', compact('users'));
     }
