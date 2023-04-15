@@ -13,6 +13,11 @@ use Illuminate\Http\RedirectResponse;
 
 class StudentClassController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(StudentClass::class);
+    }
+
     public function index(): View
     {
         $studentClasses = StudentClass::query()->with('homeroomTeacher')->paginate(10);
@@ -22,7 +27,7 @@ class StudentClassController extends Controller
 
     public function create(): View
     {
-        $teachers = Teacher::all();
+        $teachers = Teacher::pluck('name', 'id');
 
         return View('student-class.create', compact('teachers'));
     }
