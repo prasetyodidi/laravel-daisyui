@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Achievement;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreAchievementRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreAchievementRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('store', Achievement::class);
     }
 
     /**
@@ -22,7 +23,9 @@ class StoreAchievementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'achievement-name' => 'required',
+            'achievement-point' => 'required|numeric',
+            'achievement-type' => 'required',
         ];
     }
 }
