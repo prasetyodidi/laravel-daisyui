@@ -12,6 +12,12 @@ use Illuminate\Http\RedirectResponse;
 
 class ViolationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Violation::class);
+    }
+
     public function index(): View
     {
         $violations = Violation::with('violationType')->orderBy('created_at', 'desc')->paginate(10);

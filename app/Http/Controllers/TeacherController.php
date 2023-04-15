@@ -13,6 +13,11 @@ use PHPUnit\Exception;
 class TeacherController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->authorizeResource(Teacher::class);
+    }
+
     public function index(): View
     {
         $teachers = User::role('teacher')->paginate(10);
@@ -25,9 +30,6 @@ class TeacherController extends Controller
         return View('teacher.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreTeacherRequest $request): RedirectResponse
     {
         try {
@@ -48,25 +50,16 @@ class TeacherController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Teacher $teacher): View
     {
         return View('teacher.show', compact('teacher'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Teacher $teacher): View
     {
         return View('teacher.edit', compact('teacher'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateTeacherRequest $request, Teacher $teacher): RedirectResponse
     {
         try {
@@ -84,9 +77,6 @@ class TeacherController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Teacher $teacher): RedirectResponse
     {
         try {

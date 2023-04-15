@@ -8,11 +8,18 @@ use App\Models\Student;
 use App\Models\StudentViolation;
 use App\Models\Violation;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 class StudentViolationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(StudentViolation::class);
+    }
+
     public function index(): View
     {
         $studentViolations = StudentViolation::with(['student', 'student.studentClass', 'reported', 'violation'])
@@ -22,7 +29,7 @@ class StudentViolationController extends Controller
         return View('student-violation.index', compact('studentViolations'));
     }
 
-    public function create()
+    public function create(): View
     {
         $students = Student::pluck('name', 'id');
         $violations = Violation::pluck('violation_name', 'id');
@@ -44,7 +51,7 @@ class StudentViolationController extends Controller
             return redirect()
                 ->route('student-violations.index')
                 ->with('success', 'Berhasil menambahkan pelanggaran siswa');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return redirect()
                 ->route('student-violations.index')
                 ->with('fail', 'gagal menambahkan pelanggaran siswa');
@@ -81,15 +88,15 @@ class StudentViolationController extends Controller
             return redirect()
                 ->route('student-violations.index')
                 ->with('success', 'Berhasil mengubah pelanggaran siswa');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
+
             return redirect()
                 ->route('student-violations.index')
                 ->with('success', 'Berhasil mengubah pelanggaran siswa');
-
         }
     }
 
-    public function destroy(StudentViolation $studentViolation)
+    public function destroy(StudentViolation $studentViolation): RedirectResponse
     {
         try {
             $studentViolation->delete();
@@ -97,11 +104,11 @@ class StudentViolationController extends Controller
             return redirect()
                 ->route('student-violations.index')
                 ->with('success', 'Berhasil menghapus pelanggaran siswa');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
+
             return redirect()
                 ->route('student-violations.index')
                 ->with('success', 'Berhasil menghapus pelanggaran siswa');
-
         }
     }
 }

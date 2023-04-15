@@ -11,6 +11,12 @@ use Illuminate\Http\RedirectResponse;
 
 class ViolationTypeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(ViolationType::class);
+    }
+
     public function index(): View
     {
         $violationTypes = ViolationType::paginate(10);
@@ -71,7 +77,7 @@ class ViolationTypeController extends Controller
         }
     }
 
-    public function destroy(ViolationType $violationType)
+    public function destroy(ViolationType $violationType): RedirectResponse
     {
         try {
             $violationType->delete();

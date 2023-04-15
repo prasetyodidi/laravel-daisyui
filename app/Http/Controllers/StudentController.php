@@ -13,6 +13,12 @@ use Illuminate\Http\RedirectResponse;
 
 class StudentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Student::class);
+    }
+
     public function index(): View
     {
         $students = Student::query()->with('studentClass')->paginate(10);
