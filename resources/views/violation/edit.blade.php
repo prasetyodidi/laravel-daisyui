@@ -27,7 +27,7 @@
                 <select name="violation-type" class="select select-bordered w-full">
                     <option disabled>Pilih jenis pelanggaran</option>
                     @foreach($violationTypes as $key => $type)
-                        @if($key == $violation->id)
+                        @if($key == $violation->violation_types_id)
                             <option value="{{ $key }}" selected>{{ $type }}</option>
                         @else
                             <option value="{{ $key }}">{{ $type }}</option>

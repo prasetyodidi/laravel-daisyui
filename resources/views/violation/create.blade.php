@@ -27,7 +27,7 @@
                         <option value="{{ $key }}">{{ $type }}</option>
                     @endforeach
                 </select>
-                <x-validation-message name="student-class"/>
+                <x-validation-message name="violation-type"/>
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Tambah</button>
