@@ -10,6 +10,7 @@
                 <input type="text"
                        name="achievement-name"
                        placeholder="Nama Pencapaian"
+                       value="{{ old('achievement-name') }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="achievement-name"/>
             </label>
@@ -17,6 +18,7 @@
                 <input type="number"
                        name="achievement-point"
                        placeholder="Point Pencapaian"
+                       value="{{ old('achievement-point') }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="achievement-point"/>
             </label>
@@ -24,7 +26,11 @@
                 <select name="achievement-type" class="select select-bordered w-full">
                     <option disabled selected>Pilih jenis pelanggaran</option>
                     @foreach($achievementTypes as $key => $type)
-                        <option value="{{ $key }}">{{ $type }}</option>
+                        @if($key == old('achievement-type'))
+                            <option value="{{ $key }}" selected>{{ $type }}</option>
+                        @else
+                            <option value="{{ $key }}">{{ $type }}</option>
+                        @endif
                     @endforeach
                 </select>
                 <x-validation-message name="achievement-type"/>

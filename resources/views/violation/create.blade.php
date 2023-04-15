@@ -10,6 +10,7 @@
                 <input type="text"
                        name="violation-name"
                        placeholder="Nama Pelanggaran"
+                       value="{{ old('violation-name') }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="violation-name"/>
             </label>
@@ -17,6 +18,7 @@
                 <input type="number"
                        name="violation-point"
                        placeholder="Point Pelanggaran"
+                       value="{{ old('violation-point') }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="violation-point"/>
             </label>
@@ -24,7 +26,11 @@
                 <select name="violation-type" class="select select-bordered w-full">
                     <option disabled selected>Pilih jenis pelanggaran</option>
                     @foreach($violationTypes as $key => $type)
-                        <option value="{{ $key }}">{{ $type }}</option>
+                        @if($key == old('violation-type'))
+                            <option value="{{ $key }}" selected>{{ $type }}</option>
+                        @else
+                            <option value="{{ $key }}">{{ $type }}</option>
+                        @endif
                     @endforeach
                 </select>
                 <x-validation-message name="violation-type"/>

@@ -10,7 +10,7 @@
                 <input type="text"
                        name="class-name"
                        placeholder="Nama Kelas"
-                       value="{{ old('name') }}"
+                       value="{{ old('class-name') }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="class-name"/>
             </label>

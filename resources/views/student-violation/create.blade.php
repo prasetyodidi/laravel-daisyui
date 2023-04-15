@@ -10,7 +10,11 @@
                 <select name="student" class="select select-bordered w-full">
                     <option disabled selected>Pilih Siswa</option>
                     @foreach($students as $key => $student)
+                        @if($key == old('student'))
+                            <option value="{{ $key }}" selected>{{ $student }}</option>
+                        @else
                             <option value="{{ $key }}">{{ $student }}</option>
+                        @endif
                     @endforeach
                 </select>
                 <x-validation-message name="student"/>
@@ -19,7 +23,11 @@
                 <select name="violation" class="select select-bordered w-full">
                     <option disabled selected>Pilih Pelanggaran</option>
                     @foreach($violations as $key => $violation)
+                        @if($key == old('violation'))
+                            <option value="{{ $key }}" selected>{{ $violation  }}</option>
+                        @else
                             <option value="{{ $key }}">{{ $violation  }}</option>
+                        @endif
                     @endforeach
                 </select>
                 <x-validation-message name="violation"/>
