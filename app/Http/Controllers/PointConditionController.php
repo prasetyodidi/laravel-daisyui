@@ -5,62 +5,82 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePointConditionRequest;
 use App\Http\Requests\UpdatePointConditionRequest;
 use App\Models\PointCondition;
+use Exception;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class PointConditionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function __construct()
     {
-        //
+        $this->authorizeResource(PointCondition::class);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function index(): View
     {
-        //
+        $pointConditions = PointCondition::query()->orderBy('minimum_point')->paginate(10);
+
+        return View('point-condition.index', compact('pointConditions'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorePointConditionRequest $request)
+    public function create(): View
     {
-        //
+        return View('point-condition.create');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(PointCondition $pointCondition)
+    public function store(StorePointConditionRequest $request): RedirectResponse
     {
-        //
+        try {
+            $data = [
+                'condition_name' => $request->input('condition-name'),
+                'minimum_point' => $request->input('minimum-point'),
+                'maximum_point' => $request->input('maximum-point'),
+            ];
+
+            PointCondition::query()->create($data);
+
+            return redirect()->route('point-conditions.index')->with('success', 'Berhasil menambahkan ketentuan point');
+        } catch (Exception $exception) {
+            return redirect()->route('point-conditions.index')->with('fail', 'Gagal menambahkan ketentuan point');
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(PointCondition $pointCondition)
+    public function show(PointCondition $pointCondition): View
     {
-        //
+        return View('point-condition.show', compact('pointCondition'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePointConditionRequest $request, PointCondition $pointCondition)
+    public function edit(PointCondition $pointCondition): View
     {
-        //
+        return View('point-condition.edit', compact('pointCondition'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(PointCondition $pointCondition)
+    public function update(UpdatePointConditionRequest $request, PointCondition $pointCondition): RedirectResponse
     {
-        //
+        try {
+            $data = [
+                'condition_name' => $request->input('condition-name'),
+                'minimum_point' => $request->input('minimum-point'),
+                'maximum_point' => $request->input('maximum-point'),
+            ];
+
+            $pointCondition->update($data);
+
+            return redirect()->route('point-conditions.index')->with('success', 'Berhasil mengubah ketentuan point');
+        } catch (Exception $exception) {
+            return redirect()->route('point-conditions.index')->with('fail', 'Gagal mengubah ketentuan point');
+        }
+    }
+
+    public function destroy(PointCondition $pointCondition): RedirectResponse
+    {
+        try {
+            $pointCondition->delete();
+
+            return redirect()->route('point-conditions.index')->with('success', 'Berhasil menghapus ketentuan point');
+        } catch (Exception $exception) {
+            return redirect()->route('point-conditions.index')->with('fail', 'Berhasil menghapus ketentuan point');
+        }
     }
 }
