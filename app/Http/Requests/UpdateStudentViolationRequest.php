@@ -11,7 +11,7 @@ class UpdateStudentViolationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->can('store', $this->route('student_violation'));
+        return $this->user()->can('update', $this->route('student_violation'));
     }
 
     /**
