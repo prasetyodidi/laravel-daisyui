@@ -11,7 +11,7 @@
         <div class="dropdown dropdown-end">
             <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 rounded-full">
-                    <img src="https://ui-avatars.com/api/?name=John+Doe" alt="Your Avatar"/>
+                    <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name }}" alt="Your Avatar"/>
                 </div>
             </label>
             <ul tabindex="0"
