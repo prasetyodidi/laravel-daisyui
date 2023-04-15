@@ -1,34 +1,33 @@
 @extends('dashboard.main')
 
 @section('content')
-    <h1 class="text-xl mb-4">Ubah Kelas</h1>
+    <h1 class="text-xl mb-4">Tambah Kelas</h1>
 
-    <form action="{{ route('student-classes.update', $studentClass->id) }}" method="post">
+    <form action="{{ route('student-classes.store') }}" method="post">
         @csrf
-        @method('put')
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <label>
                 <input type="text"
                        name="class-name"
                        placeholder="Nama Kelas"
-                       value="{{ old('name', $studentClass->class_name) }}"
+                       value="{{ old('name') }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="class-name"/>
             </label>
             <label>
                 <select name="homeroom-teacher" class="select select-bordered w-full">
-                    <option disabled>Pilih Wali Kelas</option>
-                    @foreach($teachers as $teacher)
-                        @if($teacher->id == $studentClass->homeroom_teachers_id)
-                            <option value="{{ $teacher->id }}" selected>{{ $teacher->name }}</option>
+                    <option disabled selected>Pilih Wali Kelas</option>
+                    @foreach($teachers as $key => $teacher)
+                        @if($key == old('homeroom-teacher'))
+                            <option value="{{ $key }}" selected>{{ $teacher }}</option>
                         @else
-                            <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                            <option value="{{ $key }}">{{ $teacher }}</option>
                         @endif
                     @endforeach
                 </select>
                 <x-validation-message name="homeroom-teacher"/>
             </label>
         </div>
-        <button type="submit" class="btn btn-primary">Ubah</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
     </form>
 @endsection
