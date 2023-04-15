@@ -18,9 +18,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($violations as $violation)
+                @foreach($violations as $key => $violation)
                     <tr class="hover hover:cursor-pointer">
-                        <th id="row-number">{{ $loop->iteration }}</th>
+                        <th id="row-number">{{ $violations->firstItem() + $key }}</th>
                         <td>{{ $violation->violation_name }}</td>
                         <td>{{ $violation->violationType->violation_type_name }}</td>
                         <td>{{ $violation->violation_point }}</td>

@@ -12,9 +12,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($activities as $activity)
+                @foreach($activities as $key => $activity)
                     <tr class="hover hover:cursor-pointer">
-                        <th id="row-number">{{ $loop->iteration }}</th>
+                        <th id="row-number">{{ $activities->firstItem() + $key }}</th>
                         <td>{{ $activity['created_at'] }}</td>
                         <td>{{ $activity['name'] }}</td>
                     </tr>

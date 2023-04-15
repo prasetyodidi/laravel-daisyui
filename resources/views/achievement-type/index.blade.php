@@ -15,9 +15,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($achievementTypes as $type)
+                @foreach($achievementTypes as $key => $type)
                     <tr class="hover hover:cursor-pointer">
-                        <th id="row-number">{{ $loop->iteration }}</th>
+                        <th id="row-number">{{ $achievementTypes->firstItem() + $key }}</th>
                         <td>{{ $type->achievement_type_name }}</td>
                         <td class="flex flex-row gap-2 h-full">
                             <a href="{{ route('achievement-types.edit', $type->id) }}"

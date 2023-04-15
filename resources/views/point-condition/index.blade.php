@@ -18,9 +18,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($pointConditions as $pointCondition)
+                @foreach($pointConditions as $key => $pointCondition)
                     <tr class="hover hover:cursor-pointer">
-                        <th id="row-number">{{ $loop->iteration }}</th>
+                        <th id="row-number">{{ $pointConditions->firstItem() + $key }}</th>
                         <td>{{ $pointCondition->condition_name }}</td>
                         <td>{{ $pointCondition->minimum_point }}</td>
                         <td>{{ $pointCondition->maximum_point }}</td>

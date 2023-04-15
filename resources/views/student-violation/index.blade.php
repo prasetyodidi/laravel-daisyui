@@ -21,9 +21,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($studentViolations as $student)
+                @foreach($studentViolations as $key => $student)
                     <tr class="hover hover:cursor-pointer">
-                        <th id="row-number">{{ $loop->iteration }}</th>
+                        <th id="row-number">{{ $studentViolations->firstItem() + $key }}</th>
                         <td>{{ $student->student->name }}</td>
                         <td>{{ $student->student->studentClass->class_name }}</td>
                         <td>{{ $student->reported->name }}</td>

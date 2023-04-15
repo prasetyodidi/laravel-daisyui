@@ -16,9 +16,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach($studentClasses as $studentClass)
+                    @foreach($studentClasses as $key => $studentClass)
                     <tr class="hover hover:cursor-pointer">
-                        <th id="row-number">{{ $loop->iteration }}</th>
+                        <th id="row-number">{{ $studentClasses->firstItem() + $key }}</th>
                         <td>{{ $studentClass->class_name }}</td>
                         <td>{{ $studentClass->homeroomTeacher->name }}</td>
                         <td class="flex flex-row gap-2">

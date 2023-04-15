@@ -18,9 +18,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($achievements as $achievement)
+                @foreach($achievements as $key => $achievement)
                     <tr class="hover hover:cursor-pointer">
-                        <th id="row-number">{{ $loop->iteration }}</th>
+                        <th id="row-number">{{ $achievements->firstItem() + $key }}</th>
                         <td>{{ $achievement->achievement_name }}</td>
                         <td>{{ $achievement->achievementType->achievement_type_name }}</td>
                         <td>{{ $achievement->achievement_point }}</td>

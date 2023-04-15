@@ -20,9 +20,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($teachers as $teacher)
+                @foreach($teachers as $key => $teacher)
                     <tr class="hover hover:cursor-pointer">
-                        <th id="row-number">{{ $loop->iteration }}</th>
+                        <th id="row-number">{{ $teachers->firstItem() + $key }}</th>
                         <td>{{ $teacher->name }}</td>
                         <td>{{ $teacher->username }}</td>
                         <td>{{ $teacher->email }}</td>
