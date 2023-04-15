@@ -1,7 +1,7 @@
 @extends('dashboard.main')
 
 @section('content')
-    <h1 class="text-xl mb-4">Tambah Siswa</h1>
+    <h1 class="text-xl mb-4">Tambah</h1>
 
     <form action="{{ route('student-violations.store') }}" method="post">
         @csrf

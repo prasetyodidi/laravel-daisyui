@@ -1,7 +1,7 @@
 @extends('dashboard.main')
 
 @section('content')
-    <h1 class="text-xl mb-4">Ubah Pelanggaran Siswa</h1>
+    <h1 class="text-xl mb-4">Ubah</h1>
 
     <form action="{{ route('student-violations.update', $studentViolation->id) }}" method="post">
         @csrf
@@ -25,7 +25,7 @@
                     <option disabled>Pilih Pelanggaran</option>
                     @foreach($violations as $key => $violation)
                         @if($key == $studentViolation->violations_id)
-                            <option value="{{ $key }}" selected>{{ $violation  }}</option>
+                            <option value="{{ $key }}" selected>{{ $violation }}</option>
                         @else
                             <option value="{{ $key }}">{{ $violation  }}</option>
                         @endif

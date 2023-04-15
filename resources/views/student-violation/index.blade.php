@@ -28,7 +28,7 @@
                         <td>{{ $student->student->studentClass->class_name }}</td>
                         <td>{{ $student->reported->name }}</td>
                         <td>{{ $student->violation->violation_name }}</td>
-                        <td>{{ $student->student->name }}</td>
+                        <td>{{ $student->violation->violation_point }}</td>
                         <td>{{ $student->violated_at }}</td>
                         <td class="flex flex-row gap-2 h-full">
                             <a href="{{ route('student-violations.edit', $student->id) }}"
