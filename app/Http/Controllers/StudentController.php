@@ -29,7 +29,7 @@ class StudentController extends Controller
 
     public function create(): View
     {
-        $classes = StudentClass::all();
+        $classes = StudentClass::pluck('class_name', 'id');
 
         $genders = [
             ['id' => Gender::Man, 'name' => 'Laki - laki'],
