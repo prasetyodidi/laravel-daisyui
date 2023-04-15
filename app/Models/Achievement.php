@@ -11,6 +11,8 @@ class Achievement extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function studentAchievements(): HasMany
     {
         return $this->hasMany(StudentAchievement::class, 'achievements_id');
@@ -19,4 +21,5 @@ class Achievement extends Model
     public function achievementType(): BelongsTo
     {
         return $this->belongsTo(AchievementType::class, 'achievement_types_id');
-    }}
+    }
+}
