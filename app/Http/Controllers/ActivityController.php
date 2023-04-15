@@ -9,9 +9,11 @@ use Illuminate\Contracts\View\View;
 
 class ActivityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->authorizeResource(ActivityController::class);
+    }
+
     public function index(): View
     {
         $activities = Activity::with([
