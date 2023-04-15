@@ -10,6 +10,8 @@ class StudentAchievement extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function student(): BelongsTo
     {
         return $this->belongsTo(Student::class, 'students_id');
@@ -23,4 +25,5 @@ class StudentAchievement extends Model
     public function achievement(): BelongsTo
     {
         return $this->belongsTo(Achievement::class, 'achievements_id');
-    }}
+    }
+}
