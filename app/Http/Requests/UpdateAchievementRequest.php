@@ -11,7 +11,7 @@ class UpdateAchievementRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('student_achievement'));
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateAchievementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'achievement-name' => 'required',
+            'achievement-point' => 'required|numeric',
+            'achievement-type' => 'required',
         ];
     }
 }

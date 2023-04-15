@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\PointCondition;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePointConditionRequest extends FormRequest
@@ -11,7 +12,7 @@ class StorePointConditionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('store', PointCondition::class);
     }
 
     /**
@@ -22,7 +23,9 @@ class StorePointConditionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'condition-name' => 'required',
+            'minimum-point' => 'required|numeric',
+            'maximum-point' => 'required|numeric'
         ];
     }
 }

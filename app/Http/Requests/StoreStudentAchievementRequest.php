@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\StudentAchievement;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreStudentAchievementRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreStudentAchievementRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('store', StudentAchievement::class);
     }
 
     /**
@@ -22,7 +23,9 @@ class StoreStudentAchievementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'student' => 'required',
+            'achievement' => 'required',
+            'achieved-at' => 'required'
         ];
     }
 }

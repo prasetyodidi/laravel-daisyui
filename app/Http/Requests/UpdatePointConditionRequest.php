@@ -11,7 +11,7 @@ class UpdatePointConditionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('point_condition'));
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdatePointConditionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'condition-name' => 'required',
+            'minimum-point' => 'required|numeric',
+            'maximum-point' => 'required|numeric'
         ];
     }
 }
