@@ -5,62 +5,90 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAchievementTypeRequest;
 use App\Http\Requests\UpdateAchievementTypeRequest;
 use App\Models\AchievementType;
+use Exception;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class AchievementTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function __construct()
     {
-        //
+        $this->authorizeResource(AchievementType::class);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function index(): View
     {
-        //
+        $achievementTypes = AchievementType::paginate(10);
+
+        return View('achievement-type.index', compact('achievementTypes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreAchievementTypeRequest $request)
+    public function create(): View
     {
-        //
+        return View('achievement-type.create');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(AchievementType $achievementType)
+    public function store(StoreAchievementTypeRequest $request): RedirectResponse
     {
-        //
+        try {
+            $data = [
+                'achievement_type_name' => $request->input('achievement-type-name')
+            ];
+
+            AchievementType::query()->create($data);
+
+            return redirect()
+                ->route('achievement-types.index')
+                ->with('success', 'Berhasil manambahkan jenis pencapaian');
+        } catch (Exception) {
+            return redirect()
+                ->route('achievement-types.index')
+                ->with('fail', 'Gagal manambahkan jenis pencapaian');
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(AchievementType $achievementType)
+    public function show(AchievementType $achievementType): View
     {
-        //
+        return View('achievement-type.show', compact('achievementType'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateAchievementTypeRequest $request, AchievementType $achievementType)
+    public function edit(AchievementType $achievementType): View
     {
-        //
+        return View('achievement-type.edit', compact('achievementType'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(AchievementType $achievementType)
+    public function update(UpdateAchievementTypeRequest $request, AchievementType $achievementType): RedirectResponse
     {
-        //
+        try {
+            $data = [
+                'achievement_type_name' => $request->input('achievement-type-name')
+            ];
+
+            $achievementType->update($data);
+
+            return redirect()
+                ->route('achievement-types.index')
+                ->with('success', 'Berhasil mengubah jenis pencapaian');
+        } catch (Exception) {
+            return redirect()
+                ->route('achievement-types.index')
+                ->with('fail', 'Gagal mengubah jenis pencapaian');
+        }
+    }
+
+    public function destroy(AchievementType $achievementType): RedirectResponse
+    {
+        try {
+            $achievementType->delete();
+
+            return redirect()
+                ->route('achievement-types.index')
+                ->with('success', 'Berhasil menghapus jenis pencapaian');
+        } catch (Exception) {
+            return redirect()
+                ->route('achievement-types.index')
+                ->with('fail', 'Gagal menghapus jenis pencapaian');
+        }
     }
 }
