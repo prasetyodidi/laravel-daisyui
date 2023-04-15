@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
@@ -12,8 +11,8 @@ class RoleAndPermissionSeeder extends Seeder
 {
     private array $modules = [
         'Activity', 'Point Condition', 'Student', 'Student Class',
-        'Student Violation', 'Teacher', 'User', 'Violation', 'Violation Type',
-        'Role', 'Permission'
+        'Teacher', 'User', 'Student Violation', 'Violation', 'Violation Type',
+        'Role', 'Permission', 'Student Achievement', 'Achievement', 'Achievement Type',
     ];
 
     private array $pluralActions = [
