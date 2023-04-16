@@ -27,7 +27,35 @@
                             and {{ count($role->permissions) - 2 }} more
                         </td>
                         <td>{{ $role->created_at }}</td>
-                        <td><a href="{{ route('roles.edit', $role->id) }}" class="link">edit</a></td>
+                        <td class="flex flex-row gap-2 h-full">
+                            <a href="{{ route('roles.edit', $role->id) }}"
+                               class="flex flex-row items-center gap-1 hover:link text-orange-600 text-sm py-1">
+                                <x-heroicon-o-pencil class="h-4 w-4 "/>
+                                edit
+                            </a>
+{{--                            <a href="#modal-delete-{{ $loop->iteration }}"--}}
+{{--                               class="flex flex-row items-center gap-1 hover:link text-red-600 text-sm py-1">--}}
+{{--                                <x-heroicon-o-trash class="h-4 w-4 "/>--}}
+{{--                                delete--}}
+{{--                            </a>--}}
+
+                            <div class="modal" id="modal-delete-{{ $loop->iteration }}">
+                                <div class="modal-box w-5/12 max-w-5xl">
+                                    <form action="{{ route('roles.destroy', $role->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+
+                                        <h1 class="font-bold text-xl text-center">Hapus Siswa</h1>
+                                        <h2 class="text-center">Apakah anda yakin menghapus data siswa ini</h2>
+
+                                        <div class="modal-action flex flex-row justify-between mt-8">
+                                            <a href="#" class="btn">Tutup</a>
+                                            <button type="submit" class="btn btn-error">Hapus</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

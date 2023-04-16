@@ -169,19 +169,36 @@
                         <x-slot name="content">
                             <ul>
                                 <li>
-                                    <a href="{{ route('users.index') }}"
-                                       class="{{ request()->routeIs('users.index') ? 'active' : '' }}
-                                               menu-item">
-                                        User
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('permissions.index') }}"
-                                       class="{{ request()->routeIs('permissions.index') ? 'active' : '' }} menu-item">
-                                        Permission
-                                    </a>
-                                </li>
-                                <li><a class="menu-item">Role</a></li>
+                                @can('viewAny', \App\Models\User::class)
+                                    <x-sidebar-item>
+                                        <x-slot name="title">User</x-slot>
+                                        <x-slot name="icon">
+                                            <x-heroicon-o-document-text class="h-5 w-5"/>
+                                        </x-slot>
+                                        <x-slot name="routeName">users.index</x-slot>
+                                        <x-slot name="activeAt">users.*</x-slot>
+                                    </x-sidebar-item>
+                                @endcan
+                                @can('viewAny', \App\Models\Permission::class)
+                                    <x-sidebar-item>
+                                        <x-slot name="title">Permission</x-slot>
+                                        <x-slot name="icon">
+                                            <x-heroicon-o-document-text class="h-5 w-5"/>
+                                        </x-slot>
+                                        <x-slot name="routeName">permissions.index</x-slot>
+                                        <x-slot name="activeAt">permissions.*</x-slot>
+                                    </x-sidebar-item>
+                                @endcan
+                                @can('viewAny', \App\Models\Role::class)
+                                    <x-sidebar-item>
+                                        <x-slot name="title">Role</x-slot>
+                                        <x-slot name="icon">
+                                            <x-heroicon-o-document-text class="h-5 w-5"/>
+                                        </x-slot>
+                                        <x-slot name="routeName">roles.index</x-slot>
+                                        <x-slot name="activeAt">roles.*</x-slot>
+                                    </x-sidebar-item>
+                                @endcan
                             </ul>
                         </x-slot>
                     </x-my-dropdown>
