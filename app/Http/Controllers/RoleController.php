@@ -4,34 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use App\Models\Permission;
 use App\Models\Role;
-use App\Services\Role\RoleService;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class RoleController extends Controller
 {
-    public function __construct(
-        private RoleService $roleService
-    )
-    {
-    }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): View
     {
         $roles = Role::query()->with('permissions')->get();
 
         return View('role.index', compact('roles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
-        //
+        return View('role.create');
     }
 
     /**
@@ -50,13 +39,17 @@ class RoleController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Role $role)
+    public function edit(Role $role): View
     {
+//        $permissions = Permission::pluck('name', 'id');
 
-        return View('role.edit', compact('role'));
+        $permissions = [
+            'activity' => ['create', 'delete', 'list', 'force delete', 'restore', 'update', 'view'],
+            'student' => ['create', 'delete', 'list', 'force delete', 'restore', 'update', 'view'],
+            'violation' => ['create', 'delete', 'list', 'force delete', 'restore', 'update', 'view'],
+        ];
+
+        return View('role.edit', compact('role', 'permissions'));
     }
 
     /**
