@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ dark: false }" x-bind:data-theme="dark === true ? 'dark' : 'winter'">
+<html lang="en" x-data="{ dark: true }" :data-theme="dark === true ? 'dark' : 'winter'">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
