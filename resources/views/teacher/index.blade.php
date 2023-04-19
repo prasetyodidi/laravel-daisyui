@@ -16,7 +16,7 @@
                     <th id="role">Email</th>
                     <th id="verified-at">NIP</th>
                     <th id="verified-at">Mata Pelajaran</th>
-                    <th id="action">Aksi</th>
+                    <th id="action"></th>
                 </tr>
                 </thead>
                 <tbody>

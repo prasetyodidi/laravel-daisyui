@@ -14,7 +14,7 @@
                     <th id="name">Nama</th>
                     <th id="email">Jenis</th>
                     <th id="role">Point</th>
-                    <th id="action">Action</th>
+                    <th id="action"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,12 +28,12 @@
                             <a href="{{ route('achievements.edit', $achievement->id) }}"
                                class="flex flex-row items-center gap-1 hover:link text-orange-600 text-sm py-1">
                                 <x-heroicon-o-pencil class="h-4 w-4 "/>
-                                edit
+                                ubah
                             </a>
                             <a href="#modal-delete-{{ $loop->iteration }}"
                                class="flex flex-row items-center gap-1 hover:link text-red-600 text-sm py-1">
                                 <x-heroicon-o-trash class="h-4 w-4 "/>
-                                delete
+                                hapus
                             </a>
 
                             <div class="modal" id="modal-delete-{{ $loop->iteration }}">

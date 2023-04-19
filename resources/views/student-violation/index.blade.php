@@ -17,7 +17,7 @@
                     <th id="verified-at">Pelanggaran</th>
                     <th id="verified-at">Point</th>
                     <th id="verified-at">Tanggal Pelanggaran</th>
-                    <th id="action">Action</th>
+                    <th id="action"></th>
                 </tr>
                 </thead>
                 <tbody>
