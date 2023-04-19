@@ -3,7 +3,7 @@
 @section('content')
     <div class="w-full">
         <div class="flex flex-row justify-between">
-            <a href="#modal-import-teacher" class="btn btn-success my-2">Import Guru</a>
+            <a href="#modal-import-teacher" class="btn btn-success my-2">Impor Guru</a>
             <a href="{{ route('teacher.create')  }}" class="btn btn-success my-2">Tambah Guru</a>
         </div>
         <div class="overflow-x-auto w-full">
@@ -16,7 +16,7 @@
                     <th id="role">Email</th>
                     <th id="verified-at">NIP</th>
                     <th id="verified-at">Mata Pelajaran</th>
-                    <th id="action">Action</th>
+                    <th id="action">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,12 +32,12 @@
                             <a href="{{ route('teacher.edit', $teacher->id) }}"
                                class="flex flex-row items-center gap-1 hover:link text-orange-600 text-sm py-1">
                                 <x-heroicon-o-pencil class="h-4 w-4 "/>
-                                edit
+                                ubah
                             </a>
                             <a href="#modal-delete-{{ $loop->iteration }}"
                                class="flex flex-row items-center gap-1 hover:link text-red-600 text-sm py-1">
                                 <x-heroicon-o-trash class="h-4 w-4 "/>
-                                delete
+                                hapus
                             </a>
 
                             <div class="modal" id="modal-delete-{{ $loop->iteration }}">
@@ -70,7 +70,7 @@
             @csrf
             @method('post')
             <div class="modal-box">
-                <h1 class="font-bold text-lg mb-6">Import User</h1>
+                <h1 class="font-bold text-lg mb-6">Impor User</h1>
 
                 <div class="form-control w-full max-w-xs">
                     <input type="file"
@@ -83,8 +83,8 @@
                 </div>
 
                 <div class="modal-action flex flex-row justify-between">
-                    <a href="#" class="btn">Close</a>
-                    <a href="#" class="btn btn-primary">Import</a>
+                    <a href="#" class="btn">Tutup</a>
+                    <a href="#" class="btn btn-primary">Impor</a>
                 </div>
             </div>
         </form>
