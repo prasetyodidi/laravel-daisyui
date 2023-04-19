@@ -36,7 +36,7 @@
                        placeholder="NIP"
                        value="{{ old('employee-id-number') }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="student-id-number"/>
+                <x-validation-message name="employee-id-number"/>
             </label>
             <label>
                 <input type="password"
