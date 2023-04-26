@@ -18,12 +18,11 @@
                 class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
                 <li>
                     <a class="justify-between">
-                        Profile
-                        <span class="badge">New</span>
+                        Profil
                     </a>
                 </li>
-                <li><a>Settings</a></li>
-                <li @click="dark = !dark"><a>theme</a></li>
+                <li><a>Pengaturan</a></li>
+                <li x-data @click="$store.darkMode.toggle()"><a>Tema</a></li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
