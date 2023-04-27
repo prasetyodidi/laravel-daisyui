@@ -13,7 +13,7 @@ class AdminPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->hasPermissionTo('List Admins');
     }
 
     /**
@@ -21,7 +21,7 @@ class AdminPolicy
      */
     public function view(User $user, Admin $admin): bool
     {
-        //
+        return $user->hasPermissionTo('View Admin');
     }
 
     /**
@@ -29,7 +29,7 @@ class AdminPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasPermissionTo('Create Admin');
     }
 
     /**
@@ -37,7 +37,7 @@ class AdminPolicy
      */
     public function update(User $user, Admin $admin): bool
     {
-        //
+        return $user->hasPermissionTo('Update Admin');
     }
 
     /**
@@ -45,7 +45,7 @@ class AdminPolicy
      */
     public function delete(User $user, Admin $admin): bool
     {
-        //
+        return $user->hasPermissionTo('Delete Admin');
     }
 
     /**
@@ -53,7 +53,7 @@ class AdminPolicy
      */
     public function restore(User $user, Admin $admin): bool
     {
-        //
+        return $user->hasPermissionTo('Restore Admin');
     }
 
     /**
@@ -61,6 +61,6 @@ class AdminPolicy
      */
     public function forceDelete(User $user, Admin $admin): bool
     {
-        //
+        return $user->hasPermissionTo('Force Delete Admin');
     }
 }
