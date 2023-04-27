@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ImportUserRequest;
 use App\Services\User\UserService;
-use \Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ImportUserController extends Controller
 {
@@ -12,13 +12,11 @@ class ImportUserController extends Controller
         private readonly UserService $userService
     ) {}
 
-    public function store(ImportUserRequest $request): View
+    public function store(ImportUserRequest $request): RedirectResponse
     {
         $this->userService->importUser($request->file('excel-file'));
 
-        $users = $this->userService->all();
-
-        return View('user.index', compact('users'))
-                ->with('success', 'Berhasil mengimport data');
+        return redirect()->route('users.index')
+                ->with('success', 'Berhasil mengimpor data');
     }
 }
