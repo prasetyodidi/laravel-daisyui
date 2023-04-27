@@ -3,7 +3,10 @@
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\AchievementTypeController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImportStudentController;
+use App\Http\Controllers\ImportTeacherController;
 use App\Http\Controllers\ImportUserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PointConditionController;
@@ -17,6 +20,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViolationController;
 use App\Http\Controllers\ViolationTypeController;
+use App\Imports\StudentsImport;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,11 +52,18 @@ Route::resource('achievement-types', AchievementTypeController::class);
 Route::resource('point-conditions', PointConditionController::class);
 Route::resource('student-achievements', StudentAchievementController::class);
 Route::resource('student-classes', StudentClassController::class);
+
 Route::resource('students', StudentController::class);
+Route::post('students/import', [ImportStudentController::class, 'store'])->name('students.import');
+
 Route::resource('student-violations', StudentViolationController::class);
 Route::resource('violations', ViolationController::class);
 Route::resource('violation-types', ViolationTypeController::class);
+
 Route::resource('teacher', TeacherController::class);
+Route::post('teachers/import', [ImportTeacherController::class, 'store'])->name('teachers.import');
+
+Route::resource('admins', AdminController::class);
 Route::resource('activities', ActivityController::class);
 
 require __DIR__.'/auth.php';
