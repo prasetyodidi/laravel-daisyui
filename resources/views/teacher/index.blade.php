@@ -3,8 +3,8 @@
 @section('content')
     <div class="w-full">
         <div class="flex flex-row justify-between">
-            <a href="#modal-import-teacher" class="btn btn-success my-2">Impor Guru</a>
-            <a href="{{ route('teacher.create')  }}" class="btn btn-success my-2">Tambah Guru</a>
+            <a href="#modal-import-teacher" class="btn btn-primary my-2">Impor Guru</a>
+            <a href="{{ route('teacher.create')  }}" class="btn btn-primary my-2">Tambah Guru</a>
         </div>
         <div class="overflow-x-auto w-full">
             <table class="table w-full" aria-describedby="list of users">
@@ -46,8 +46,8 @@
                                         @csrf
                                         @method('delete')
 
-                                        <h1 class="font-bold text-xl text-center">Hapus Siswa</h1>
-                                        <h2 class="text-center">Apakah anda yakin menghapus data siswa ini</h2>
+                                        <h1 class="font-bold text-xl text-center">Hapus Guru</h1>
+                                        <h2 class="text-center">Apakah anda yakin menghapus data guru ini</h2>
 
                                         <div class="modal-action flex flex-row justify-between mt-8">
                                             <a href="#" class="btn">Tutup</a>
@@ -66,11 +66,11 @@
     </div>
 
     <div class="modal" id="modal-import-teacher">
-        <form action="{{ route('user.import') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('teachers.import') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('post')
             <div class="modal-box">
-                <h1 class="font-bold text-lg mb-6">Impor User</h1>
+                <h1 class="font-bold text-lg mb-6">Impor Guru</h1>
 
                 <div class="form-control w-full max-w-xs">
                     <input type="file"
@@ -84,7 +84,7 @@
 
                 <div class="modal-action flex flex-row justify-between">
                     <a href="#" class="btn">Tutup</a>
-                    <a href="#" class="btn btn-primary">Impor</a>
+                    <button type="submit" class="btn btn-primary">Impor</a>
                 </div>
             </div>
         </form>
