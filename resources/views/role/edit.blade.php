@@ -2,30 +2,53 @@
 
 @section('content')
     <div class="w-full pt-20">
-        <input type="text"
-               placeholder="Type here"
-               value="{{ $role->name }}"
-               class="input input-bordered w-full max-w-xs"/>
+        <form action="{{ route('roles.update', $role) }}" method="post">
+            @csrf
+            @method('PUT')
+            <label>
+                <span class="text-sm">Nama Role</span>
+                <input type="text"
+                       placeholder="Type here"
+                       value="{{ $role->name }}"
+                       class="input input-bordered w-full mb-4"/>
+            </label>
 
-        <div>
-            @foreach($permissions as $key => $permission)
-                <div class="flex flex-col" x-data="{ isAllChecked: true }">
-                    <label>
-                        <input type="checkbox" :checked="isAllChecked" @click="isAllChecked = !isAllChecked">
-                        {{ $key }}
-                    </label>
-                    <div class="pl-3 flex flex-col">
-                        @foreach($permission as $action)
-                            <label>
-                                <input type="checkbox" :checked="isAllChecked">
-                                {{ $action }}
-                            </label>
-                        @endforeach
+            <div class="grid grid-cols-3 gap-4">
+                @foreach($permissions as $key => $permission)
+                    <div class="flex flex-col" x-data="{ isAllChecked: true }" id="{{ $key }}">
+                        <label onclick="toggleTest('{{ $key }}')">
+                            <input type="checkbox" class="checkbox {{ $key }}">
+                            {{ $key }}
+                        </label>
+                        <div class="pl-3 flex flex-col">
+                            @foreach($permission as $action)
+                                <label>
+                                    <input type="checkbox"
+                                           name="permissions[]"
+                                           value="{{ $action }}"
+                                           @if(in_array($action, $permissionsRole))
+                                               checked
+                                           @endif
+                                           class="checkbox checkbox-sm {{ $key }}">
+                                    {{ $action }}
+                                </label>
+                            @endforeach
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
-
+                @endforeach
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Ubah</button>
+        </form>
     </div>
-@endsection
 
+    <script>
+        function toggleTest(className) {
+            const test = document.getElementsByClassName(className);
+
+            for (let i = 1; i < test.length; i++) {
+                test[i].checked = test[0].checked;
+            }
+        }
+    </script>
+
+@endsection
