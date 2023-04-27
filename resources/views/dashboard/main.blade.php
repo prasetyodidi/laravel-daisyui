@@ -114,6 +114,7 @@
                         <x-slot name="activeAt">students.*</x-slot>
                     </x-sidebar-item>
                     @endcan
+                    @canany(['List Student Violations','List Violations', 'List Violation Types'])
                     <x-my-dropdown>
                         <x-slot name="title">Pelanggaran</x-slot>
                         <x-slot name="content">
@@ -157,6 +158,8 @@
                             </ul>
                         </x-slot>
                     </x-my-dropdown>
+                    @endcanany
+                    @canany(['List Student Achievements','List Achievements', 'List Achievement Types'])
                     <x-my-dropdown>
                         <x-slot name="title">Pencapaian</x-slot>
                         <x-slot name="content">
@@ -200,6 +203,8 @@
                             </ul>
                         </x-slot>
                     </x-my-dropdown>
+                    @endcanany
+                    @canany(['List Users','List Permissions', 'List Roles'])
                     <x-my-dropdown>
                         <x-slot name="title">Permission</x-slot>
                         <x-slot name="content">
@@ -238,6 +243,7 @@
                             </ul>
                         </x-slot>
                     </x-my-dropdown>
+                    @endcanany
                 </ul>
             </x-slot>
         </x-sidebar>
