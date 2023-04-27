@@ -57,8 +57,17 @@ class DatabaseSeeder extends Seeder
             $this->seedStudentAchievement($teacherId, $students);
             $this->command->info('Student Achievements created.');
         }
-    }
 
+        StudentClass::factory()->create([
+            'class_name' => 'RPL 1',
+            'homeroom_teachers_id' => $teacherIds[0],
+        ]);
+
+        StudentClass::factory()->create([
+            'class_name' => 'RPL 2',
+            'homeroom_teachers_id' => $teacherIds[1],
+        ]);
+    }
 
     private function seedStudentViolation(string $teacherId, Collection $students): void
     {
