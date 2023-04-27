@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
+use Exception;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class RoleController extends Controller
 {
@@ -23,48 +24,23 @@ class RoleController extends Controller
         return View('role.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreRoleRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Role $role)
-    {
-        //
-    }
-
     public function edit(Role $role): View
     {
-//        $permissions = Permission::pluck('name', 'id');
+        $permissions = (new Permission())->listPermissions();
+        $permissionsRole = $role->permissions->map(fn($item) => $item->name)->toArray();
 
-        $permissions = [
-            'activity' => ['create', 'delete', 'list', 'force delete', 'restore', 'update', 'view'],
-            'student' => ['create', 'delete', 'list', 'force delete', 'restore', 'update', 'view'],
-            'violation' => ['create', 'delete', 'list', 'force delete', 'restore', 'update', 'view'],
-        ];
-
-        return View('role.edit', compact('role', 'permissions'));
+        return View('role.edit', compact('role', 'permissions', 'permissionsRole'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(UpdateRoleRequest $request, Role $role): RedirectResponse
     {
-        //
+        $permissions = $request->input('permissions');
+        try {
+            $role->syncPermissions($permissions);
+            return redirect()->route('roles.index')->with('success', 'Berhasil mengubah data role');
+        } catch (Exception $exception) {
+            return redirect()->route('roles.index')->with('fail', 'Gagal mengubah data role');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Role $role)
-    {
-        //
-    }
 }
