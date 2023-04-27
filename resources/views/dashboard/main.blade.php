@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ dark: true }" :data-theme="dark === true ? 'dark' : 'winter'">
+<html lang="en" x-data :data-theme="$store.darkMode.on === 'true' ? 'dark' : 'winter'">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,6 +63,16 @@
                         <x-slot name="activeAt">activities.*</x-slot>
                     </x-sidebar-item>
                     @endcan
+                    @can('viewAny', \App\Models\Admin::class)
+                    <x-sidebar-item>
+                        <x-slot name="title">Admin</x-slot>
+                        <x-slot name="icon">
+                            <x-heroicon-o-document-text class="h-5 w-5"/>
+                        </x-slot>
+                        <x-slot name="routeName">admins.index</x-slot>
+                        <x-slot name="activeAt">admins.*</x-slot>
+                    </x-sidebar-item>
+                    @endcan
                     @can('viewAny', \App\Models\Teacher::class)
                     <x-sidebar-item>
                         <x-slot name="title">Guru</x-slot>
@@ -104,66 +114,92 @@
                         <x-slot name="activeAt">students.*</x-slot>
                     </x-sidebar-item>
                     @endcan
-                    @can('viewAny', \App\Models\StudentViolation::class)
-                    <x-sidebar-item>
-                        <x-slot name="title">Pelanggaran Siswa</x-slot>
-                        <x-slot name="icon">
-                            <x-heroicon-o-document-text class="h-5 w-5"/>
-                        </x-slot>
-                        <x-slot name="routeName">student-violations.index</x-slot>
-                        <x-slot name="activeAt">student-violations.*</x-slot>
-                    </x-sidebar-item>
-                    @endcan
-                    @can('viewAny', \App\Models\Violation::class)
-                    <x-sidebar-item>
+                    <x-my-dropdown>
                         <x-slot name="title">Pelanggaran</x-slot>
-                        <x-slot name="icon">
-                            <x-heroicon-o-document-text class="h-5 w-5"/>
+                        <x-slot name="content">
+                            <ul>
+                                <li>
+                                    @can('viewAny', \App\Models\StudentViolation::class)
+                                        <x-sidebar-item>
+                                            <x-slot name="title">Pelanggaran Siswa</x-slot>
+                                            <x-slot name="icon">
+                                                <x-heroicon-o-document-text class="h-5 w-5"/>
+                                            </x-slot>
+                                            <x-slot name="routeName">student-violations.index</x-slot>
+                                            <x-slot name="activeAt">student-violations.*</x-slot>
+                                        </x-sidebar-item>
+                                    @endcan
+                                </li>
+                                <li>
+                                    @can('viewAny', \App\Models\Violation::class)
+                                        <x-sidebar-item>
+                                            <x-slot name="title">Pelanggaran</x-slot>
+                                            <x-slot name="icon">
+                                                <x-heroicon-o-document-text class="h-5 w-5"/>
+                                            </x-slot>
+                                            <x-slot name="routeName">violations.index</x-slot>
+                                            <x-slot name="activeAt">violations.*</x-slot>
+                                        </x-sidebar-item>
+                                    @endcan
+                                </li>
+                                <li>
+                                    @can('viewAny', \App\Models\ViolationType::class)
+                                        <x-sidebar-item>
+                                            <x-slot name="title">Jenis Pelanggaran</x-slot>
+                                            <x-slot name="icon">
+                                                <x-heroicon-o-document-text class="h-5 w-5"/>
+                                            </x-slot>
+                                            <x-slot name="routeName">violation-types.index</x-slot>
+                                            <x-slot name="activeAt">violation-types.*</x-slot>
+                                        </x-sidebar-item>
+                                    @endcan
+                                </li>
+                            </ul>
                         </x-slot>
-                        <x-slot name="routeName">violations.index</x-slot>
-                        <x-slot name="activeAt">violations.*</x-slot>
-                    </x-sidebar-item>
-                    @endcan
-                    @can('viewAny', \App\Models\ViolationType::class)
-                    <x-sidebar-item>
-                        <x-slot name="title">Jenis Pelanggaran</x-slot>
-                        <x-slot name="icon">
-                            <x-heroicon-o-document-text class="h-5 w-5"/>
-                        </x-slot>
-                        <x-slot name="routeName">violation-types.index</x-slot>
-                        <x-slot name="activeAt">violation-types.*</x-slot>
-                    </x-sidebar-item>
-                    @endcan
-                    @can('viewAny', \App\Models\StudentAchievement::class)
-                    <x-sidebar-item>
-                        <x-slot name="title">Pencapaian Siswa</x-slot>
-                        <x-slot name="icon">
-                            <x-heroicon-o-document-text class="h-5 w-5"/>
-                        </x-slot>
-                        <x-slot name="routeName">student-achievements.index</x-slot>
-                        <x-slot name="activeAt">student-achievements.*</x-slot>
-                    </x-sidebar-item>
-                    @endcan
-                    @can('viewAny', \App\Models\Achievement::class)
-                    <x-sidebar-item>
+                    </x-my-dropdown>
+                    <x-my-dropdown>
                         <x-slot name="title">Pencapaian</x-slot>
-                        <x-slot name="icon">
-                            <x-heroicon-o-document-text class="h-5 w-5"/>
+                        <x-slot name="content">
+                            <ul>
+                                <li>
+                                    @can('viewAny', \App\Models\StudentAchievement::class)
+                                        <x-sidebar-item>
+                                            <x-slot name="title">Pencapaian Siswa</x-slot>
+                                            <x-slot name="icon">
+                                                <x-heroicon-o-document-text class="h-5 w-5"/>
+                                            </x-slot>
+                                            <x-slot name="routeName">student-achievements.index</x-slot>
+                                            <x-slot name="activeAt">student-achievements.*</x-slot>
+                                        </x-sidebar-item>
+                                    @endcan
+                                </li>
+                                <li>
+                                    @can('viewAny', \App\Models\Achievement::class)
+                                        <x-sidebar-item>
+                                            <x-slot name="title">Pencapaian</x-slot>
+                                            <x-slot name="icon">
+                                                <x-heroicon-o-document-text class="h-5 w-5"/>
+                                            </x-slot>
+                                            <x-slot name="routeName">achievements.index</x-slot>
+                                            <x-slot name="activeAt">achievements.*</x-slot>
+                                        </x-sidebar-item>
+                                    @endcan
+                                </li>
+                                <li>
+                                    @can('viewAny', \App\Models\AchievementType::class)
+                                        <x-sidebar-item>
+                                            <x-slot name="title">Jenis Pencapaian</x-slot>
+                                            <x-slot name="icon">
+                                                <x-heroicon-o-document-text class="h-5 w-5"/>
+                                            </x-slot>
+                                            <x-slot name="routeName">achievement-types.index</x-slot>
+                                            <x-slot name="activeAt">achievement-types.*</x-slot>
+                                        </x-sidebar-item>
+                                    @endcan
+                                </li>
+                            </ul>
                         </x-slot>
-                        <x-slot name="routeName">achievements.index</x-slot>
-                        <x-slot name="activeAt">achievements.*</x-slot>
-                    </x-sidebar-item>
-                    @endcan
-                    @can('viewAny', \App\Models\AchievementType::class)
-                    <x-sidebar-item>
-                        <x-slot name="title">Jenis Pencapaian</x-slot>
-                        <x-slot name="icon">
-                            <x-heroicon-o-document-text class="h-5 w-5"/>
-                        </x-slot>
-                        <x-slot name="routeName">achievement-types.index</x-slot>
-                        <x-slot name="activeAt">achievement-types.*</x-slot>
-                    </x-sidebar-item>
-                    @endcan
+                    </x-my-dropdown>
                     <x-my-dropdown>
                         <x-slot name="title">Permission</x-slot>
                         <x-slot name="content">
