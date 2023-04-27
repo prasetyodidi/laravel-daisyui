@@ -12,7 +12,7 @@ class RoleAndPermissionSeeder extends Seeder
     private array $modules = [
         'Activity', 'Point Condition', 'Student', 'Student Class',
         'Teacher', 'User', 'Student Violation', 'Violation', 'Violation Type',
-        'Role', 'Permission', 'Student Achievement', 'Achievement', 'Achievement Type',
+        'Role', 'Permission', 'Student Achievement', 'Achievement', 'Achievement Type', 'Admin'
     ];
 
     private array $pluralActions = [
