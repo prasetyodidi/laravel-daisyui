@@ -6,9 +6,9 @@ use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
 use App\Models\Teacher;
 use App\Models\User;
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use PHPUnit\Exception;
 
 class TeacherController extends Controller
 {
@@ -45,7 +45,7 @@ class TeacherController extends Controller
             $teacher->assignRole('teacher');
 
             return redirect()->route('teacher.index')->with('success', 'Berhasil menambahkan guru');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return redirect()->route('teacher.index')->with('fail', 'Gagal menambahkan guru');
         }
     }
@@ -72,7 +72,7 @@ class TeacherController extends Controller
             $teacher->update($data);
 
             return redirect()->route('teacher.index')->with('success', 'Berhasil mengubah data guru');
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return redirect()->route('teacher.index')->with('fail', 'Gagal mengubah data guru');
         }
     }
@@ -83,7 +83,7 @@ class TeacherController extends Controller
             $teacher->delete();
             return redirect()->route('teacher.index')->with('success', 'Berhasil menghapus data guru');
         } catch (Exception $exception) {
-            return redirect()->route('teacher.index')->with('success', 'Gagal menghapus data guru');
+            return redirect()->route('teacher.index')->with('fail', 'Gagal menghapus data guru');
         }
     }
 }
