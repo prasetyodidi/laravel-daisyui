@@ -64,7 +64,7 @@
     </div>
 
     <div class="modal" id="modal-import-student">
-        <form action="{{ route('user.import') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('students.import') }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('post')
             <div class="modal-box">
@@ -82,7 +82,7 @@
 
                 <div class="modal-action flex flex-row justify-between">
                     <a href="#" class="btn">Tutup</a>
-                    <a href="#" class="btn btn-primary">Impor</a>
+                    <button type="submit" class="btn btn-primary">Impor</button>
                 </div>
             </div>
         </form>
