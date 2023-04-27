@@ -11,7 +11,7 @@ class UpdateAdminRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('admin'));
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'username' => 'required|unique:users,username,' . $this->admin->id,
+            'employee-id-number' => 'required|unique:users,employee_id_number,' . $this->admin->id,
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreAdminRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreAdminRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('store', Admin::class);
     }
 
     /**
@@ -22,7 +23,12 @@ class StoreAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'username' => 'required|unique:users,username',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required',
+            'employee-id-number' => 'required|unique:users,employee_id_number',
         ];
     }
 }

@@ -24,12 +24,12 @@ class StoreTeacherRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'username' => 'required|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
-            'username' => 'required|unique:users,username',
-            'subject' => 'required',
             'employee-id-number' => 'required|unique:users,employee_id_number',
+            'subject' => 'required',
         ];
     }
 }
