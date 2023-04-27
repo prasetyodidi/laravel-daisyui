@@ -14,4 +14,12 @@ enum Gender: string
             self::Women => 'Perempuan'
         };
     }
+
+    public static function fromIndonesia(string $input): self
+    {
+        return match ($input) {
+            self::Man->inIndonesia() => self::Man,
+            self::Women->inIndonesia() => self::Women,
+        };
+    }
 }
