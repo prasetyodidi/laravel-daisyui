@@ -25,4 +25,5 @@ class StudentViolation extends Model
     public function violation(): BelongsTo
     {
         return $this->belongsTo(Violation::class, 'violations_id');
-    }}
+    }
+}

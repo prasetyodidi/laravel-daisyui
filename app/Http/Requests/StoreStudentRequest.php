@@ -30,4 +30,5 @@ class StoreStudentRequest extends FormRequest
             'gender' => 'required',
         ];
     }
+
 }
