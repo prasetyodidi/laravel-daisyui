@@ -44,7 +44,7 @@ class StudentViolationController extends Controller
                 'students_id' => $request->input('student'),
                 'violations_id' => $request->input('violation'),
                 'reported_by' => auth()->id(),
-                'violated_at' => $request->input('violated-at'),
+                'violated_at' => $request->input('violated_at'),
             ];
             StudentViolation::query()->create($data);
 
@@ -81,7 +81,7 @@ class StudentViolationController extends Controller
                 'students_id' => $request->input('student'),
                 'violations_id' => $request->input('violation'),
                 'reported_id' => auth()->id(),
-                'violated_at' => $request->input('violated-at'),
+                'violated_at' => $request->input('violated_at'),
             ];
             $studentViolation->update($data);
 

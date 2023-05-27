@@ -46,8 +46,8 @@ class StudentController extends Controller
 
             $data = [
                 'name' => $request->input('name'),
-                'classes_id' => $request->input('student-class'),
-                'student_id_number' => $request->input('student-id-number'),
+                'classes_id' => $request->input('student_class'),
+                'student_id_number' => $request->input('student_id_number'),
                 'address' => $request->input('address'),
                 'gender' => $request->input('gender'),
             ];
@@ -91,8 +91,8 @@ class StudentController extends Controller
 
             $data = [
                 'name' => $request->input('name'),
-                'classes_id' => $request->input('student-class'),
-                'student_id_number' => $request->input('student-id-number'),
+                'classes_id' => $request->input('student_class'),
+                'student_id_number' => $request->input('student_id_number'),
                 'address' => $request->input('address'),
                 'gender' => $request->input('gender'),
             ];

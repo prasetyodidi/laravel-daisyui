@@ -33,9 +33,9 @@ class PointConditionController extends Controller
     {
         try {
             $data = [
-                'condition_name' => $request->input('condition-name'),
-                'minimum_point' => $request->input('minimum-point'),
-                'maximum_point' => $request->input('maximum-point'),
+                'condition_name' => $request->input('condition_name'),
+                'minimum_point' => $request->input('minimum_point'),
+                'maximum_point' => $request->input('maximum_point'),
             ];
 
             PointCondition::query()->create($data);
@@ -60,9 +60,9 @@ class PointConditionController extends Controller
     {
         try {
             $data = [
-                'condition_name' => $request->input('condition-name'),
-                'minimum_point' => $request->input('minimum-point'),
-                'maximum_point' => $request->input('maximum-point'),
+                'condition_name' => $request->input('condition_name'),
+                'minimum_point' => $request->input('minimum_point'),
+                'maximum_point' => $request->input('maximum_point'),
             ];
 
             $pointCondition->update($data);

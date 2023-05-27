@@ -15,25 +15,25 @@
                 <x-validation-message name="name"/>
             </label>
             <label>
-                <select name="student-class" class="select select-bordered w-full">
+                <select name="student_class" class="select select-bordered w-full">
                     <option disabled selected>Pilih kelas</option>
                     @foreach($classes as $key => $class)
-                        @if($key == old('student-class'))
+                        @if($key == old('student_class'))
                             <option value="{{ $key }}" selected>{{ $class  }}</option>
                         @else
                             <option value="{{ $key }}">{{ $class  }}</option>
                         @endif
                     @endforeach
                 </select>
-                <x-validation-message name="student-class"/>
+                <x-validation-message name="student_class"/>
             </label>
             <label>
                 <input type="text"
-                       name="student-id-number"
+                       name="student_id_number"
                        placeholder="NIS"
-                       value="{{ old('student-id-number') }}"
+                       value="{{ old('student_id_number') }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="student-id-number"/>
+                <x-validation-message name="student_id_number"/>
             </label>
             <label>
                 <input type="text"

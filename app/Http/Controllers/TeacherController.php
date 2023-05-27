@@ -38,7 +38,7 @@ class TeacherController extends Controller
                 'email' => $request->input('email'),
                 'username' => $request->input('username'),
                 'password' => bcrypt($request->input('password')),
-                'employee_id_number' => $request->input('employee-id-number'),
+                'employee_id_number' => $request->input('employee_id_number'),
                 'subject' => $request->input('subject'),
             ];
             $teacher = User::query()->create($data);
@@ -66,7 +66,7 @@ class TeacherController extends Controller
             $data = [
                 'name' => $request->input('name'),
                 'username' => $request->input('username'),
-                'employee_id_number' => $request->input('employee-id-number'),
+                'employee_id_number' => $request->input('employee_id_number'),
                 'subject' => $request->input('subject'),
             ];
             $teacher->update($data);

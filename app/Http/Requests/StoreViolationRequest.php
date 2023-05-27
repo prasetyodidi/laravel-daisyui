@@ -23,9 +23,9 @@ class StoreViolationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'violation-name' => 'required',
-            'violation-point' => 'required|numeric',
-            'violation-type' => 'required',
+            'violation_name' => 'required',
+            'violation_point' => 'required|numeric',
+            'violation_type' => 'required',
         ];
     }
 }

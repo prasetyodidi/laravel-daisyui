@@ -36,9 +36,9 @@ class AchievementController extends Controller
     {
         try {
             $data = [
-                'achievement_name' => $request->input('achievement-name'),
-                'achievement_point' => $request->input('achievement-point'),
-                'achievement_types_id' => $request->input('achievement-type'),
+                'achievement_name' => $request->input('achievement_name'),
+                'achievement_point' => $request->input('achievement_point'),
+                'achievement_types_id' => $request->input('achievement_type'),
             ];
 
             Achievement::query()->create($data);
@@ -65,9 +65,9 @@ class AchievementController extends Controller
     {
         try {
             $data = [
-                'achievement_name' => $request->input('achievement-name'),
-                'achievement_point' => $request->input('achievement-point'),
-                'achievement_types_id' => $request->input('achievement-type'),
+                'achievement_name' => $request->input('achievement_name'),
+                'achievement_point' => $request->input('achievement_point'),
+                'achievement_types_id' => $request->input('achievement_type'),
             ];
 
             $achievement->update($data);

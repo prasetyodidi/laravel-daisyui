@@ -9,14 +9,14 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <label>
                 <input type="text"
-                       name="class-name"
+                       name="class_name"
                        placeholder="Nama Kelas"
-                       value="{{ old('name', $studentClass->class_name) }}"
+                       value="{{ old('class_name', $studentClass->class_name) }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="class-name"/>
+                <x-validation-message name="class_name"/>
             </label>
             <label>
-                <select name="homeroom-teacher" class="select select-bordered w-full">
+                <select name="homeroom_teacher" class="select select-bordered w-full">
                     <option disabled>Pilih Wali Kelas</option>
                     @foreach($teachers as $teacher)
                         @if($teacher->id == $studentClass->homeroom_teachers_id)
@@ -26,7 +26,7 @@
                         @endif
                     @endforeach
                 </select>
-                <x-validation-message name="homeroom-teacher"/>
+                <x-validation-message name="homeroom_teacher"/>
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Ubah</button>

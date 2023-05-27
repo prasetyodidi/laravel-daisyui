@@ -23,9 +23,9 @@ class StorePointConditionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'condition-name' => 'required',
-            'minimum-point' => 'required|numeric',
-            'maximum-point' => 'required|numeric'
+            'condition_name' => 'required',
+            'minimum_point' => 'required|numeric',
+            'maximum_point' => 'required|numeric'
         ];
     }
 }

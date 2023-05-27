@@ -2,15 +2,6 @@
 
 @section('content')
     <h1 class="text-xl mb-4">Ubah Admin</h1>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <form action="{{ route('admins.update', $admin->id) }}" method="post">
         @csrf
         @method('put')
@@ -25,19 +16,19 @@
             </label>
             <label>
                 <input type="text"
-                       name="Username"
-                       placeholder="username"
+                       name="username"
+                       placeholder="Username"
                        value="{{ old('username', $admin->username) }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="username"/>
             </label>
             <label>
                 <input type="text"
-                       name="employee-id-number"
+                       name="employee_id_number"
                        placeholder="NIP"
-                       value="{{ old('employee-id-number', $admin->employee_id_number) }}"
+                       value="{{ old('employee_id_number', $admin->employee_id_number) }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="employee-id-number"/>
+                <x-validation-message name="employee_id_number"/>
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Ubah</button>

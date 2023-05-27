@@ -9,27 +9,27 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <label>
                 <input type="text"
-                       name="condition-name"
+                       name="condition_name"
                        placeholder="Nama Ketentuan"
-                       value="{{ old('condition-name', $pointCondition->condition_name) }}"
+                       value="{{ old('condition_name', $pointCondition->condition_name) }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="condition-name"/>
+                <x-validation-message name="condition_name"/>
             </label>
             <label>
                 <input type="number"
-                       name="minimum-point"
+                       name="minimum_point"
                        placeholder="Minimum Point"
-                       value="{{ old('minimum-point', $pointCondition->minimum_point) }}"
+                       value="{{ old('minimum_point', $pointCondition->minimum_point) }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="minimum-point"/>
+                <x-validation-message name="minimum_point"/>
             </label>
             <label>
                 <input type="number"
-                       name="maximum-point"
+                       name="maximum_point"
                        placeholder="Minimum Point"
-                       value="{{ old('maximum-point', $pointCondition->maximum_point) }}"
+                       value="{{ old('maximum_point', $pointCondition->maximum_point) }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="maximum-point"/>
+                <x-validation-message name="maximum_point"/>
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Ubah</button>

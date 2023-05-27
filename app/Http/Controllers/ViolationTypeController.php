@@ -33,7 +33,7 @@ class ViolationTypeController extends Controller
     {
         try {
             $data = [
-                'violation_type_name' => $request->input('violation-type-name')
+                'violation_type_name' => $request->input('violation_type_name')
             ];
 
             ViolationType::query()->create($data);
@@ -62,7 +62,7 @@ class ViolationTypeController extends Controller
     {
         try {
             $data = [
-                'violation_type_name' => $request->input('violation-type-name')
+                'violation_type_name' => $request->input('violation_type_name')
             ];
 
             $violationType->update($data);

@@ -22,7 +22,7 @@ class UpdateViolationTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'violation-type-name' => 'required'
+            'violation_type_name' => 'required'
         ];
     }
 }

@@ -34,10 +34,10 @@
             </label>
             <label>
                 <input type="date"
-                       name="achieved-at"
-                       value="{{ old('achieved-at') }}"
+                       name="achieved_at"
+                       value="{{ old('achieved_at') }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="achieved-at"/>
+                <x-validation-message name="achieved_at"/>
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Tambah</button>

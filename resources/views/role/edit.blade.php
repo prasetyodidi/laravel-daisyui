@@ -9,8 +9,10 @@
                 <span class="text-sm">Nama Role</span>
                 <input type="text"
                        placeholder="Nama Role"
-                       value="{{ $role->name }}"
+                       value="{{ old('role_name', $role->name) }}"
+                       name="role_name"
                        class="input input-bordered w-full mb-4"/>
+                <x-validation-message name="role_name"/>
             </label>
 
             <div class="grid grid-cols-3 gap-4">

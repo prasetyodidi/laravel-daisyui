@@ -33,7 +33,7 @@ class AchievementTypeController extends Controller
     {
         try {
             $data = [
-                'achievement_type_name' => $request->input('achievement-type-name')
+                'achievement_type_name' => $request->input('achievement_type_name')
             ];
 
             AchievementType::query()->create($data);
@@ -62,7 +62,7 @@ class AchievementTypeController extends Controller
     {
         try {
             $data = [
-                'achievement_type_name' => $request->input('achievement-type-name')
+                'achievement_type_name' => $request->input('achievement_type_name')
             ];
 
             $achievementType->update($data);

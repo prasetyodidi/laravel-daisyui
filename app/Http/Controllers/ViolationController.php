@@ -36,9 +36,9 @@ class ViolationController extends Controller
     {
         try {
             $data = [
-                'violation_name' => $request->input('violation-name'),
-                'violation_point' => $request->input('violation-point'),
-                'violation_types_id' => $request->input('violation-type'),
+                'violation_name' => $request->input('violation_name'),
+                'violation_point' => $request->input('violation_point'),
+                'violation_types_id' => $request->input('violation_type'),
             ];
 
             Violation::query()->create($data);
@@ -65,9 +65,9 @@ class ViolationController extends Controller
     {
         try {
             $data = [
-                'violation_name' => $request->input('violation-name'),
-                'violation_point' => $request->input('violation-point'),
-                'violation_types_id' => $request->input('violation-type'),
+                'violation_name' => $request->input('violation_name'),
+                'violation_point' => $request->input('violation_point'),
+                'violation_types_id' => $request->input('violation_type'),
             ];
 
             $violation->update($data);

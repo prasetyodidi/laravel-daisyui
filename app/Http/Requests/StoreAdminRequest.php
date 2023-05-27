@@ -28,7 +28,7 @@ class StoreAdminRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
-            'employee-id-number' => 'required|unique:users,employee_id_number',
+            'employee_id_number' => 'required|unique:users,employee_id_number',
         ];
     }
 }

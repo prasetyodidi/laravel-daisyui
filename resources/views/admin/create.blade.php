@@ -32,11 +32,11 @@
             </label>
             <label>
                 <input type="text"
-                       name="employee-id-number"
+                       name="employee_id_number"
                        placeholder="NIP"
-                       value="{{ old('employee-id-number') }}"
+                       value="{{ old('employee_id_number') }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="employee-id-number"/>
+                <x-validation-message name="employee_id_number"/>
             </label>
             <label>
                 <input type="password"
@@ -48,7 +48,7 @@
             <label>
                 <input type="password"
                        name="password_confirmation"
-                       placeholder="Confirm Password"
+                       placeholder="Konfirmasi Password"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="password_confirmation"/>
             </label>

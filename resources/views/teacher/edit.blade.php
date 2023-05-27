@@ -25,11 +25,11 @@
             </label>
             <label>
                 <input type="text"
-                       name="employee-id-number"
+                       name="employee_id_number"
                        placeholder="NIP"
-                       value="{{ old('employee-id-number', $teacher->employee_id_number) }}"
+                       value="{{ old('employee_id_number', $teacher->employee_id_number) }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="employee-id-number"/>
+                <x-validation-message name="employee_id_number"/>
             </label>
             <label>
                 <input type="text"

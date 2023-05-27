@@ -37,6 +37,10 @@ class RoleController extends Controller
         $permissions = $request->input('permissions');
         try {
             $role->syncPermissions($permissions);
+            $data = [
+                'name' => $request->input('role_name')
+            ];
+            $role->update($data);
             return redirect()->route('roles.index')->with('success', 'Berhasil mengubah data role');
         } catch (Exception $exception) {
             return redirect()->route('roles.index')->with('fail', 'Gagal mengubah data role');

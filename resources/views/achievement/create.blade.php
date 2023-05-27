@@ -8,32 +8,32 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <label>
                 <input type="text"
-                       name="achievement-name"
+                       name="achievement_name"
                        placeholder="Nama Pencapaian"
-                       value="{{ old('achievement-name') }}"
+                       value="{{ old('achievement_name') }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="achievement-name"/>
+                <x-validation-message name="achievement_name"/>
             </label>
             <label>
                 <input type="number"
-                       name="achievement-point"
+                       name="achievement_point"
                        placeholder="Point Pencapaian"
-                       value="{{ old('achievement-point') }}"
+                       value="{{ old('achievement_point') }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="achievement-point"/>
+                <x-validation-message name="achievement_point"/>
             </label>
             <label>
-                <select name="achievement-type" class="select select-bordered w-full">
+                <select name="achievement_type" class="select select-bordered w-full">
                     <option disabled selected>Pilih Jenis Pelanggaran</option>
                     @foreach($achievementTypes as $key => $type)
-                        @if($key == old('achievement-type'))
+                        @if($key == old('achievement_type'))
                             <option value="{{ $key }}" selected>{{ $type }}</option>
                         @else
                             <option value="{{ $key }}">{{ $type }}</option>
                         @endif
                     @endforeach
                 </select>
-                <x-validation-message name="achievement-type"/>
+                <x-validation-message name="achievement_type"/>
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Tambah</button>

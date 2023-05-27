@@ -25,7 +25,7 @@ class UpdateTeacherRequest extends FormRequest
             'name' => 'required',
             'username' => 'required|unique:users,username,' . $this->teacher->id,
             'subject' => 'required',
-            'employee-id-number' => 'required|unique:users,employee_id_number,' . $this->teacher->id,
+            'employee_id_number' => 'required|unique:users,employee_id_number,' . $this->teacher->id,
         ];
     }
 }

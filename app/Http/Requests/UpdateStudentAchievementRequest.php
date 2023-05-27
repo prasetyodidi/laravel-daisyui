@@ -24,7 +24,7 @@ class UpdateStudentAchievementRequest extends FormRequest
         return [
             'student' => 'required',
             'achievement' => 'required',
-            'achieved-at' => 'required'
+            'achieved_at' => 'required'
         ];
     }
 }

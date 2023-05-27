@@ -37,8 +37,8 @@ class StudentClassController extends Controller
         try {
 
             $data = [
-                'homeroom_teachers_id' => $request->input('homeroom-teacher'),
-                'class_name' => $request->input('class-name')
+                'homeroom_teachers_id' => $request->input('homeroom_teacher'),
+                'class_name' => $request->input('class_name')
             ];
 
             StudentClass::query()->create($data);
@@ -67,8 +67,8 @@ class StudentClassController extends Controller
         try {
 
             $data = [
-                'homeroom_teachers_id' => $request->input('homeroom-teacher'),
-                'class_name' => $request->input('class-name')
+                'homeroom_teachers_id' => $request->input('homeroom_teacher'),
+                'class_name' => $request->input('class_name')
             ];
 
             $studentClass->update($data);

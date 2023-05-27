@@ -23,8 +23,8 @@ class StoreStudentClassRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'class-name' => 'required',
-            'homeroom-teacher' => 'required'
+            'class_name' => 'required',
+            'homeroom_teacher' => 'required'
         ];
     }
 }

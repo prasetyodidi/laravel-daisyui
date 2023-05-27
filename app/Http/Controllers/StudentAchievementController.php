@@ -44,7 +44,7 @@ class StudentAchievementController extends Controller
                 'students_id' => $request->input('student'),
                 'achievements_id' => $request->input('achievement'),
                 'reported_by' => auth()->id(),
-                'achieved_at' => $request->input('achieved-at'),
+                'achieved_at' => $request->input('achieved_at'),
             ];
             StudentAchievement::query()->create($data);
 
@@ -82,7 +82,7 @@ class StudentAchievementController extends Controller
                 'students_id' => $request->input('student'),
                 'achievements_id' => $request->input('achievement'),
                 'reported_id' => auth()->id(),
-                'achieved_at' => $request->input('achieved-at'),
+                'achieved_at' => $request->input('achieved_at'),
             ];
             $studentAchievement->update($data);
 

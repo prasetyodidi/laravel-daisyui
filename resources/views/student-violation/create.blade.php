@@ -34,10 +34,10 @@
             </label>
             <label>
                 <input type="date"
-                       name="violated-at"
-                       value="{{ old('violated-at') }}"
+                       name="violated_at"
+                       value="{{ old('violated_at') }}"
                        class="input input-bordered input-primary w-full"/>
-                <x-validation-message name="violated-at"/>
+                <x-validation-message name="violated_at"/>
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Tambah</button>

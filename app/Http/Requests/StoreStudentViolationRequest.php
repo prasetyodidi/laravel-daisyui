@@ -25,7 +25,7 @@ class StoreStudentViolationRequest extends FormRequest
         return [
             'student' => 'required',
             'violation' => 'required',
-            'violated-at' => 'required'
+            'violated_at' => 'required'
         ];
     }
 }

@@ -24,7 +24,7 @@ class UpdateAdminRequest extends FormRequest
         return [
             'name' => 'required',
             'username' => 'required|unique:users,username,' . $this->admin->id,
-            'employee-id-number' => 'required|unique:users,employee_id_number,' . $this->admin->id,
+            'employee_id_number' => 'required|unique:users,employee_id_number,' . $this->admin->id,
         ];
     }
 }

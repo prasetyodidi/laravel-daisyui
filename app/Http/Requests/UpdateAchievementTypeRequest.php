@@ -22,7 +22,7 @@ class UpdateAchievementTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'achievement-type-name' => 'required'
+            'achievement_type_name' => 'required'
         ];
     }
 }
