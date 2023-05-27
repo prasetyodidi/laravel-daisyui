@@ -24,7 +24,7 @@
             </label>
             <label>
                 <select name="violation-type" class="select select-bordered w-full">
-                    <option disabled selected>Pilih jenis pelanggaran</option>
+                    <option disabled selected>Pilih Jenis Pelanggaran</option>
                     @foreach($violationTypes as $key => $type)
                         @if($key == old('violation-type'))
                             <option value="{{ $key }}" selected>{{ $type }}</option>

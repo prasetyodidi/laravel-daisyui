@@ -8,7 +8,7 @@
             <label>
                 <span class="text-sm">Nama Role</span>
                 <input type="text"
-                       placeholder="Type here"
+                       placeholder="Nama Role"
                        value="{{ $role->name }}"
                        class="input input-bordered w-full mb-4"/>
             </label>

@@ -18,7 +18,7 @@
             <label>
                 <input type="text"
                        name="username"
-                       placeholder="username"
+                       placeholder="Username"
                        value="{{ old('username', $teacher->username) }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="username"/>

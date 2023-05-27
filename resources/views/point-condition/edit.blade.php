@@ -10,7 +10,7 @@
             <label>
                 <input type="text"
                        name="condition-name"
-                       placeholder="Nama Ketetnuan"
+                       placeholder="Nama Ketentuan"
                        value="{{ old('condition-name', $pointCondition->condition_name) }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="condition-name"/>

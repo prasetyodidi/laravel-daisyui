@@ -17,7 +17,7 @@
             <label>
                 <input type="text"
                        name="username"
-                       placeholder="username"
+                       placeholder="Username"
                        value="{{ old('username') }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="username"/>
@@ -25,7 +25,7 @@
             <label>
                 <input type="email"
                        name="email"
-                       placeholder="email"
+                       placeholder="Email"
                        value="{{ old('email') }}"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="email"/>
@@ -41,14 +41,14 @@
             <label>
                 <input type="password"
                        name="password"
-                       placeholder="password"
+                       placeholder="Password"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="password"/>
             </label>
             <label>
                 <input type="password"
                        name="password_confirmation"
-                       placeholder="confirm password"
+                       placeholder="Confirm Password"
                        class="input input-bordered input-primary w-full"/>
                 <x-validation-message name="password_confirmation"/>
             </label>

@@ -25,7 +25,7 @@
             </label>
             <label>
                 <input type="text"
-                       name="username"
+                       name="Username"
                        placeholder="username"
                        value="{{ old('username', $admin->username) }}"
                        class="input input-bordered input-primary w-full"/>

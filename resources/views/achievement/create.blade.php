@@ -24,7 +24,7 @@
             </label>
             <label>
                 <select name="achievement-type" class="select select-bordered w-full">
-                    <option disabled selected>Pilih jenis pelanggaran</option>
+                    <option disabled selected>Pilih Jenis Pelanggaran</option>
                     @foreach($achievementTypes as $key => $type)
                         @if($key == old('achievement-type'))
                             <option value="{{ $key }}" selected>{{ $type }}</option>
