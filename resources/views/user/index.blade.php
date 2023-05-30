@@ -2,9 +2,6 @@
 
 @section('content')
     <div class="w-full">
-        <div class="flex flex-row justify-end">
-            <a href="{{ route('users.create')  }}" class="btn btn-primary my-2">Tambah</a>
-        </div>
         <div class="overflow-x-auto w-full">
             <table class="table w-full" aria-describedby="list of users">
                 <thead>
