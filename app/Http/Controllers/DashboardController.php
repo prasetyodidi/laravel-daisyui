@@ -9,6 +9,15 @@ class DashboardController extends Controller
 {
     public function index(): View
     {
-        return View('dashboard.main');
+        $months = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $months[$i] = date('F', mktime(0, 0, 0, $i, 10));
+        }
+        $years = [];
+        $currentYear = date('Y');
+        for ($i = 2015; $i <= $currentYear; $i++) {
+            $years[$i] = $i;
+        }
+        return View('dashboard.statistic', compact('months', 'years'));
     }
 }

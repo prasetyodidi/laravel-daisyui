@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\AchievementStatisticController;
 use App\Http\Controllers\AchievementTypeController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\StudentViolationController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViolationController;
+use App\Http\Controllers\ViolationStatisticController;
 use App\Http\Controllers\ViolationTypeController;
 use App\Imports\StudentsImport;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +49,7 @@ Route::post('/users/import', [ImportUserController::class, 'store'])->name('user
 
 Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
+Route::get('achievements/statistic', [AchievementStatisticController::class, 'index']);
 Route::resource('achievements', AchievementController::class);
 Route::resource('achievement-types', AchievementTypeController::class);
 Route::resource('point-conditions', PointConditionController::class);
@@ -57,6 +60,7 @@ Route::resource('students', StudentController::class);
 Route::post('students/import', [ImportStudentController::class, 'store'])->name('students.import');
 
 Route::resource('student-violations', StudentViolationController::class);
+Route::get('violations/statistic', [ViolationStatisticController::class, 'index']);
 Route::resource('violations', ViolationController::class);
 Route::resource('violation-types', ViolationTypeController::class);
 
