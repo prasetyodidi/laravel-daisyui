@@ -3,6 +3,7 @@
 @section('content')
     <div class="w-full flex flex-row">
         <div class="w-1/2 flex flex-col">
+            <h1 class="text-xl text-center">Pencapaian</h1>
             <div class="flex flex-row">
                 <select name="achievement-month" id="achievement-month" class="select">
                     <option value="1" disabled selected>Bulan</option>
@@ -20,6 +21,7 @@
             <canvas id="achievements"></canvas>
         </div>
         <div class="w-1/2">
+            <h1 class="text-xl text-center">Pelanggaran</h1>
             <div class="flex flex-row">
                 <select name="violation-month" id="violation-month" class="select">
                     <option value="1" disabled selected>Bulan</option>
@@ -100,7 +102,7 @@
             violationChart.update();
         }
 
-         getStatisticData('/achievements/statistic')
+        getStatisticData('/achievements/statistic')
             .then((values) => updateAchievementChart(values) );
         getStatisticData('/violations/statistic')
             .then((values) => updateViolationChart(values));
