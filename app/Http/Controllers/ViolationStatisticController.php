@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\StudentViolation;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class ViolationStatisticController extends Controller
         $query->groupByRaw('day(violated_at)');
         $queryResult = $query->get()->pluck('total', 'day');
 
-        $totalDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        $totalDays = Carbon::parse("$year-$month")->daysInMonth;
 
         $response = [];
         for ($i = 1; $i <= $totalDays; $i++) {
